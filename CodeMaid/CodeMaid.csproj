@@ -229,7 +229,7 @@
     <Compile Include="Integration\ISwitchableFeature.cs" />
     <Compile Include="Logic\Cleaning\FileHeaderLogic.cs" />
     <Compile Include="Logic\Cleaning\RemoveRegionLogic.cs" />
-    <Compile Include="Logic\Cleaning\UnrealSlateIndent.cs" />
+    <Compile Include="Logic\Cleaning\BracketIndentLogic.cs" />
     <Compile Include="Logic\Formatting\CommentFormatLogic.cs" />
     <Compile Include="Logic\Reorganizing\CodeReorganizationAvailabilityLogic.cs" />
     <Compile Include="Logic\Reorganizing\GenerateRegionLogic.cs" />

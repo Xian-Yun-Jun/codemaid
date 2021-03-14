@@ -107,12 +107,13 @@ namespace SteveCadwallader.CodeMaid.Logic.Cleaning
             bool IsEndRightBracket = CurrentEditLintPoint.Line == Bracket.End.Line;
             string LineText = CurrentEditLintPoint.GetText(CurrentEditLintPoint.LineLength);
 
+            //整行从开头就被注释，则退出
+            if (LineText.StartsWith("//")) return;
+            //如果这行是以#开头，则退出，针对#if之类的
+            if (LineText.StartsWith("#")) return;
+
             //剔除这行最前面的制表符
             string CurrentLineText = LineText.TrimStart('\t');
-            //textTemp = LineText.TrimStart('\t');//剔除空格
-            //如果这行是以#开头，则退出，针对#if之类的
-            if (CurrentLineText.StartsWith("//")) return;
-            if (CurrentLineText.StartsWith("#")) return;
 
             //未处理该行的缩进个数
             int OldIndentCount = LineText.Length - CurrentLineText.Length;
@@ -175,10 +176,10 @@ namespace SteveCadwallader.CodeMaid.Logic.Cleaning
     }
 
     /// <summary>
-    /// 缩进 Unreal Engine Slate 格式
+    /// 被方括号包裹的行，缩进；可以处理 Unreal Engine Slate 格式
     ///     根据[]进行层级缩进
     /// </summary>
-    internal class UnrealSlateIndent
+    internal class BracketIndentLogic
     {
         #region Fields
 
@@ -191,13 +192,13 @@ namespace SteveCadwallader.CodeMaid.Logic.Cleaning
         /// <summary>
         /// The singleton instance of the <see cref="ASlateInsertIndent" /> class.
         /// </summary>
-        private static UnrealSlateIndent _instance;
+        private static BracketIndentLogic _instance;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ASlateInsertIndent" /> class.
         /// </summary>
         /// <param name="package">The hosting package.</param>
-        private UnrealSlateIndent(CodeMaidPackage package)
+        private BracketIndentLogic(CodeMaidPackage package)
         {
             _package = package;
         }
@@ -207,9 +208,9 @@ namespace SteveCadwallader.CodeMaid.Logic.Cleaning
         /// </summary>
         /// <param name="package">The hosting package.</param>
         /// <returns>An instance of the <see cref="ASlateInsertIndent" /> class.</returns>
-        internal static UnrealSlateIndent GetInstance(CodeMaidPackage package)
+        internal static BracketIndentLogic GetInstance(CodeMaidPackage package)
         {
-            return _instance ?? (_instance = new UnrealSlateIndent(package));
+            return _instance ?? (_instance = new BracketIndentLogic(package));
         }
 
         #endregion Constructors

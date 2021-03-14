@@ -34,7 +34,7 @@ namespace SteveCadwallader.CodeMaid.Logic.Cleaning
         private readonly InsertBlankLinePaddingLogic _insertBlankLinePaddingLogic;
         private readonly InsertExplicitAccessModifierLogic _insertExplicitAccessModifierLogic;
         private readonly InsertWhitespaceLogic _insertWhitespaceLogic;
-        private readonly UnrealSlateIndent _slateInsertIndent;
+        private readonly BracketIndentLogic _bracketIndentLogic;
         private readonly FileHeaderLogic _fileHeaderLogic;
         private readonly RemoveRegionLogic _removeRegionLogic;
         private readonly RemoveWhitespaceLogic _removeWhitespaceLogic;
@@ -85,7 +85,7 @@ namespace SteveCadwallader.CodeMaid.Logic.Cleaning
             _insertBlankLinePaddingLogic = InsertBlankLinePaddingLogic.GetInstance(_package);
             _insertExplicitAccessModifierLogic = InsertExplicitAccessModifierLogic.GetInstance();
             _insertWhitespaceLogic = InsertWhitespaceLogic.GetInstance(_package);
-            _slateInsertIndent = UnrealSlateIndent.GetInstance(_package);
+            _bracketIndentLogic = BracketIndentLogic.GetInstance(_package);
             _fileHeaderLogic = FileHeaderLogic.GetInstance(_package);
             _removeRegionLogic = RemoveRegionLogic.GetInstance(_package);
             _removeWhitespaceLogic = RemoveWhitespaceLogic.GetInstance(_package);
@@ -467,8 +467,8 @@ namespace SteveCadwallader.CodeMaid.Logic.Cleaning
             // Perform insertion of blank line padding cleanup.
             _insertBlankLinePaddingLogic.InsertPaddingBeforeSingleLineComments(textDocument);
 
-            //Unreal Engine Slate Indent
-            _slateInsertIndent.InsertIndent(textDocument);
+            //·½À¨ºÅËõ½ø
+            _bracketIndentLogic.InsertIndent(textDocument);
 
             // Perform insertion of whitespace cleanup.
             _insertWhitespaceLogic.InsertEOFTrailingNewLine(textDocument);
