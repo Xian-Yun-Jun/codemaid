@@ -56,7 +56,7 @@ namespace SteveCadwallader.CodeMaid.UI.Dialogs.About
         /// </param>
         private void OnWebsiteLinkClick(object sender, RoutedEventArgs e)
         {
-            LaunchLink(@"http://www.codemaid.net/");
+            LaunchLink(@"https://github.com/Xian-Yun-Jun/codemaid");
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace SteveCadwallader.CodeMaid.UI.Dialogs.About
         /// </param>
         private void OnVisualStudioMarketplaceLinkClick(object sender, RoutedEventArgs e)
         {
-            LaunchLink(@"https://marketplace.visualstudio.com/items?itemName=SteveCadwallader.CodeMaid");
+            LaunchLink(@"https://github.com/Xian-Yun-Jun/codemaid");
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace SteveCadwallader.CodeMaid.UI.Dialogs.About
         /// </param>
         private void OnGitHubLinkClick(object sender, RoutedEventArgs e)
         {
-            LaunchLink(@"https://github.com/codecadwallader/codemaid");
+            LaunchLink(@"https://github.com/Xian-Yun-Jun/codemaid");
         }
 
         /// <summary>

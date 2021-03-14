@@ -111,7 +111,8 @@ namespace SteveCadwallader.CodeMaid.Logic.Cleaning
             string CurrentLineText = LineText.TrimStart('\t');
             //textTemp = LineText.TrimStart('\t');//剔除空格
             //如果这行是以#开头，则退出，针对#if之类的
-            if (LineText.StartsWith("#")) return;
+            if (CurrentLineText.StartsWith("//")) return;
+            if (CurrentLineText.StartsWith("#")) return;
 
             //未处理该行的缩进个数
             int OldIndentCount = LineText.Length - CurrentLineText.Length;
